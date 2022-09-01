@@ -1,0 +1,32 @@
+import React, { useContext } from "react";
+import { Context } from "../Context";
+import Track from "./CardTrack";
+import Skeleton from "@material-ui/lab/Skeleton";
+
+
+
+
+const Tracks = () => {
+  const [state] = useContext(Context);
+  const { track_list, heading } = state;
+
+  if (track_list === undefined || track_list.length === 0) {
+    return <><><Skeleton variant="rectangular" width={210} height={118} /><Skeleton /><Skeleton width="60%" /></>
+      <br />
+      <><Skeleton variant="rectangular" width={210} height={118} /><Skeleton variant="text" /><Skeleton variant="text" width="60%" /></></>
+} else {
+
+    return (
+      <>
+        <h3 className="text-center mb-4">{heading}</h3>
+        <div className="row">
+          {track_list.map(item => (
+            <Track key={item.track.track_id} track={item.track} />
+          ))}
+        </div>
+      </>
+    );
+  }
+}
+
+export default Tracks;
