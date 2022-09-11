@@ -1,35 +1,23 @@
 import React from "react";
-import Tracks from "./Components/Tracks";
-import Search from "./Components/Search";
-// import Lyrics from "./Components/Lyrics";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Home from "./Components/Home";
+import Lyrics from "./Components/Lyrics";
 import "./App.css";
-import { ContextController } from "./Context";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { ContextController } from "./context";
 
 const App = () => {
   return (
     <ContextController>
       <Router>
+        <>
           <div className="container">
-          <Search />
-          <Tracks />
-            {/* <Routes>
-               <Route path="/lyrics" component={Lyrics} />
-            </Routes> */}
+            <Route exact path="/" component={Home} />
+            <Route exact path="/lyrics/:id" component={Lyrics} />
           </div>
+        </>
       </Router>
     </ContextController>
-  
   );
 };
 
 export default App;
-
-
-
-
-
-
-
-
-
