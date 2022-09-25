@@ -7,8 +7,8 @@ import { CommentsDisabledOutlined } from "@mui/icons-material";
 
 
 const Lyrics = props => {
-    const [track, setTrack] = useState({});
-    const [lyrics, setLyrics] = useState({});
+    const [track, setTrack] = useState();
+    const [lyrics, setLyrics] = useState();
 
     useEffect(() => {
         axios
@@ -36,9 +36,8 @@ const Lyrics = props => {
 
     if (
         track === undefined ||
-        lyrics === undefined ||
-        Object.keys(track).length === 0 ||
-        Object.keys(lyrics).length === 0
+        lyrics === undefined 
+       
     ) {
         return <>
             <Skeleton variant="rectangular" width={2210} height={118} /><Skeleton variant="text" width={2210} /><Skeleton variant="text" width={2210} />
@@ -73,7 +72,7 @@ const Lyrics = props => {
                 </Link>
             </>
 
-        );
+        ); 
     }
 };
 
